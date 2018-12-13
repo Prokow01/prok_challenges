@@ -1,0 +1,33 @@
+Scratch Pad - State Server
+
+Basic Requirements:
+
+	[] create RESTful server w/ Flask
+		[] Map RESTful endpoints correctly
+	[x] ingest state boundaries
+		[x] In-Memory Dict
+			[x] no EndOfLine delimiters
+		[] SQLite
+	[] Unit Tests
+		[] Doctest
+		[] Py Unit Tests
+
+
+Optimization:
+	[] Pool - This problem isn't necessarily hard, let's leverage a multiprocessing approach, there will only ever need be 50 processes running at any time (a small amount for modern hardware)
+	[] Map/Filter/Reduce - this is explicitly called out in job description, worth digging into
+		(http://book.pythontips.com/en/latest/map_filter.html)
+
+Mapping Problem:
+	[] Figure out how to get within state boundaries
+		[] generate every point within every state boundary... might be a little much but once initialized it's lighting fast - experimental approach
+
+Nice to Haves:
+	[] Config file to change approaches and measure differences
+	[] Start/Kill Script
+	[] Makefile?? never made one before, but never too late to start!
+	[] add setup.py to get everything running from scratch
+		[] Flask
+		[] pymatgen - python coords
+		[] SQLite
+		[] SQLite ingestion script - post install
