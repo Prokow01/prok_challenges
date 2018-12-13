@@ -57,7 +57,16 @@ def within_state(latidute, longitude, border_array):
     print("debug:\n    lat:: %s\n    lon:: %s\n    borders:: %s" %
           (latidute, longitude, border_array))
 
-    return False
+    test_point = Point(latidute, longitude)
+    print("Point used successfully")
+
+    Point_arr = [Point(x[0], x[1]) for x in border_array]
+
+    Pennsylvania_Polygon = Polygon(*Point_arr)
+
+    print("Pennsylvania area: %s" % Pennsylvania_Polygon)
+
+    return Pennsylvania_Polygon.encloses_point(test_point)
 
 
 if __name__ == '__main__':
@@ -81,6 +90,8 @@ if __name__ == '__main__':
         states = ingest_data(STATE_FILE)
         # need to re-do the dictionary
 
-        within_state(args.latitude, args.longitude,
+        in_pa = within_state(args.latitude, args.longitude,
                      states['Pennsylvania'])
+
+        print("is it in PA? \n %s" % in_pa)
         # we may proceed
